@@ -1,47 +1,28 @@
-import fs from 'fs';
-import path from 'path';
+import { matchRoutes } from 'react-router-config';
 
 import renderServerApp from '../helpers/appRenderHelper';
 import reduxStoreHelper from '../helpers/reduxStoreHelper';
+import appRoutes from '../../src/config/appRoutes';
 
-export default (req, res) => {
-  const filePath = path.resolve(__dirname, '..', '..', 'build', 'index.html');
-  const context = {};
-
+/**
+ * Middleware
+ * Takes care of reading html file from build folder and injecting the server side content to it
+ * @param {*} req
+ * @param {*} res
+ */
+const appRenderer = (req, res) => {
   // getting new instance of store every time a new request is made.
   // sort of keeping client and server redux store separate from each other.
   const store = reduxStoreHelper();
 
-  fs.readFile(filePath, 'utf8', (err, htmlData) => {
-    if (err) {
-      window.console.error('err', err);
-      return res
-        .status(404)
-        .send('Unable to locate the file, Please try after sometime.');
-    }
+  const promises = matchRoutes(appRoutes, req.path).map(({ route }) => {
+    return route.loadData ? route.loadData(store) : null;
+  });
 
-    const val = 400;
-
-    if (context.url) {
-      res.writeHead(302, {
-        Location: context.url,
-      });
-      res.end();
-    } else {
-      res.send(
-        htmlData.replace(
-          '<div id="root"></div>',
-          `<div id="root" class="helloWorld">${renderServerApp(
-            req,
-            context,
-            store
-          )}</div>
-          <script>
-            window.NAME_S = ${val}
-          </script>
-        `
-        )
-      );
-    }
+  Promise.all(promises).then(() => {
+    // console.log('when promise resolved', store.getState());
+    renderServerApp(req, res, store);
   });
 };
+
+export default appRenderer;

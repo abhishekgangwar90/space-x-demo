@@ -16,7 +16,7 @@ function SpaceXLaunch({ fetchMissionData, resources }) {
   const [missionData, setMissionData] = React.useState([]);
 
   useEffect(() => {
-    fetchMissionData();
+    // fetchMissionData();
   }, [fetchMissionData]);
 
   useEffect(() => {

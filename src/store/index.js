@@ -4,6 +4,6 @@ import reducer from './reducers';
 
 export default createStore(
   reducer,
-  window.INITIAL_STATE,
+  window.INITIAL_SERVER_STATE,
   applyMiddleware(thunk)
 );

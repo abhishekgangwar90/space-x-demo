@@ -1,5 +1,7 @@
 /* eslint-disable import/prefer-default-export */
+import axios from 'axios';
 import { fetchResources } from '../../api/fetchResource';
+// import { fetchResources } from '../../api/fetchResource';
 import {
   FETCH_RESOURCE,
   FETCH_RESOURCE_FAILURE,
@@ -7,20 +9,13 @@ import {
 } from '../constants';
 
 export const fetchMissionData = () => async (dispatch) => {
-  dispatch({
-    type: FETCH_RESOURCE,
-  });
-  fetchResources()
-    .then((res) => {
-      dispatch({
-        type: FETCH_RESOURCE_SUCCESS,
-        payload: res,
-      });
-    })
-    .catch((e) => {
-      dispatch({
-        type: FETCH_RESOURCE_FAILURE,
-        payload: e,
-      });
+  try {
+    const res = await fetchResources('launches?limit=100');
+    dispatch({
+      type: FETCH_RESOURCE,
+      payload: res,
     });
+  } catch (e) {
+    console.log('inside action ', e);
+  }
 };

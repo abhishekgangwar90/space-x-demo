@@ -11,14 +11,12 @@ const initialState = {
   error: null,
 };
 
-export const missionReducers = (state = initialState, action) => {
+export const missionReducers = (state = [], action) => {
   switch (action.type) {
     case FETCH_RESOURCE: {
-      return {
-        ...state,
-        isLoading: true,
-      };
+      return action.payload.data;
     }
+
     case FETCH_RESOURCE_SUCCESS: {
       return {
         ...state,
@@ -28,11 +26,7 @@ export const missionReducers = (state = initialState, action) => {
     }
 
     case FETCH_RESOURCE_FAILURE: {
-      return {
-        ...state,
-        isLoading: false,
-        error: action.payload.e,
-      };
+      return 'Error Came';
     }
 
     default:

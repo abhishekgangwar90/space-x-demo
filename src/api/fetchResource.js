@@ -2,6 +2,10 @@
 import axios from './index';
 
 export const fetchResources = async () => {
-  const response = await axios.get(`launches?limit=100`);
-  return response;
+  try {
+    const response = await axios.get(`launches?limit=100`);
+    return response;
+  } catch (e) {
+    console.log('error inside Fetch', e);
+  }
 };
