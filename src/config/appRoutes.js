@@ -1,7 +1,8 @@
+import React from 'react';
 import PageNotFound from '../pages/PageNotFound';
 import SpaceXLaunch, { loadMissionData } from '../pages/SpaceXLaunch';
 
-export const appRoutes = [
+const appRoutes = [
   {
     id: 'spaceXLaunch',
     path: '/',

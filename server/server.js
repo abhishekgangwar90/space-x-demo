@@ -7,8 +7,10 @@ const PORT = '3001';
 const app = express();
 
 const staticFiles = path.resolve(__dirname, '..', 'build');
+
+app.get('^/$', appRenderer);
+
 app.use(express.static(staticFiles));
-app.use('*', appRenderer);
 
 app.listen(PORT, () => {
   console.log(`listening on Port ${PORT}`);
