@@ -1,7 +1,6 @@
 import { Grid } from '@material-ui/core';
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router';
-import { fetchResources } from '../../api/fetchResource';
 
 import Filters from '../../organisms/Filters/Filters';
 import MissionInfo from '../../organisms/MissionInfo/MissionInfo';
@@ -10,18 +9,19 @@ import Footer from '../../atoms/Footer';
 
 import { useStyles } from './SpaceXLaunchStyles';
 
-function SpaceXLaunch({ title }) {
+function SpaceXLaunch({ fetchMissionData, resources }) {
   const classes = useStyles();
-  let { id } = useParams();
+  const { id } = useParams();
 
-  const [resources, updateState] = React.useState([]);
   const [missionData, setMissionData] = React.useState([]);
 
-  const fetchData = async () => {
-    const response = await fetchResources('launches?limit=100');
-    updateState(response.data);
-    setMissionData(response.data);
-  };
+  useEffect(() => {
+    fetchMissionData();
+  }, [fetchMissionData]);
+
+  useEffect(() => {
+    setMissionData(resources);
+  }, [resources]);
 
   useEffect(() => {
     // if (id === "all" || resources.length === 0) {
@@ -73,7 +73,7 @@ function SpaceXLaunch({ title }) {
 
   return (
     <div className={classes.container}>
-      <AppHeader title={'Space-x Launch Schedule'} />
+      <AppHeader title="Space-x Launch Schedule" />
       <div className={classes.dashboard}>
         <Grid direction="row" spacing={2} container>
           {renderFilters()}

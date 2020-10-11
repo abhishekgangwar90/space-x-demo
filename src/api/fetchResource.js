@@ -1,6 +1,6 @@
-import axios from "./index";
+import axios from './index';
 
-export const fetchResources = async (selectedResource) => {
-  const response = await axios.get(`${selectedResource}`);
+export const fetchResources = async () => {
+  const response = await axios.get(`launches?limit=100`);
   return response;
 };

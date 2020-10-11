@@ -19,9 +19,9 @@
         ],
         "react/prop-types": 0,
         "no-underscore-dangle": 0,
-        "import/extensions":[
-            "never"
-        ],
+        // "import/extensions":[
+        //     "never"
+        // ],
         "import/imports-first": [
             "error",
             "absolute-first"

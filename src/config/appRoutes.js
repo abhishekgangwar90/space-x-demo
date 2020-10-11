@@ -1,21 +1,21 @@
-import React from 'react';
-import SpaceXLaunch from "../pages/SpaceXLaunch";
+import PageNotFound from '../pages/PageNotFound';
+import SpaceXLaunch, { loadMissionData } from '../pages/SpaceXLaunch';
 
 export const appRoutes = [
   {
-    id: "spaceXLaunch",
-    link: "/",
-    title: "Space-X Launch Schedule",
+    id: 'spaceXLaunch',
+    path: '/',
+    exact: true,
+    title: 'Space-X Launch Schedule',
     component: SpaceXLaunch,
+    loadData: loadMissionData,
   },
   {
-    id: "spaceXLaunch",
-    link: "/about",
-    title: "Space-X Launch Schedule",
-    component: () =>{
-      return <>hello</>
-    },
-  }, 
+    id: 'pageNotFound',
+    path: '*',
+    title: 'Page Not Found',
+    component: PageNotFound,
+  },
 ];
 
 export default appRoutes;

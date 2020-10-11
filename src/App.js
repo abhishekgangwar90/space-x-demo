@@ -1,16 +1,16 @@
 import React from 'react';
-import { Switch, Route } from 'react-router';
+import { Switch } from 'react-router';
+import { renderRoutes } from 'react-router-config';
 import './App.css';
-import PageNotFound from './pages/PageNotFound';
-import SpaceXLaunch from './pages/SpaceXLaunch';
+
+// import PageNotFound from './pages/PageNotFound';
+// import SpaceXLaunch from './pages/SpaceXLaunch';
+import appRoutes from './config/appRoutes';
 
 function App() {
   return (
     <div className="App">
-      <Switch>
-        <Route path="/" exact component={SpaceXLaunch} />
-        <Route path="*" exact component={PageNotFound} />
-      </Switch>
+      <Switch>{renderRoutes(appRoutes)}</Switch>
     </div>
   );
 }
