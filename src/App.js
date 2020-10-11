@@ -6,10 +6,12 @@ import SpaceXLaunch from './pages/SpaceXLaunch';
 
 function App() {
   return (
-    <Switch>
-      <Route path="/" exact component={SpaceXLaunch} />
-      <Route path="/no" exact component={PageNotFound} />
-    </Switch>
+    <div className="App">
+      <Switch>
+        <Route path="/" exact component={SpaceXLaunch} />
+        <Route path="*" exact component={PageNotFound} />
+      </Switch>
+    </div>
   );
 }
 

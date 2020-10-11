@@ -1,7 +1,3 @@
-import React from 'react';
-
-function SpaceXLaunch() {
-  return <div>Space x</div>;
-}
+import SpaceXLaunch from "./SpaceXLaunch";
 
 export default SpaceXLaunch;
