@@ -2,9 +2,10 @@ import { connect } from 'react-redux';
 import SpaceXLaunch from './SpaceXLaunch';
 import { fetchMissionData } from '../../store/actions';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ missionData }) => {
+  const { data = [] } = missionData;
   return {
-    resources: state.missionData || [],
+    resources: data,
   };
 };
 

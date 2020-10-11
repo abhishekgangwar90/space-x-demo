@@ -16,7 +16,7 @@ function SpaceXLaunch({ fetchMissionData, resources }) {
   const [missionData, setMissionData] = React.useState([]);
 
   useEffect(() => {
-    // fetchMissionData();
+    fetchMissionData();
   }, [fetchMissionData]);
 
   useEffect(() => {
@@ -44,10 +44,14 @@ function SpaceXLaunch({ fetchMissionData, resources }) {
   }, [id]);
 
   const handleFilterSelection = (selectedFilter) => {
+    const tempValue =
+      typeof selectedFilter.value !== 'boolean'
+        ? `${selectedFilter.value}`
+        : selectedFilter.value;
     setMissionData(
       selectedFilter.key !== ''
         ? resources.filter((elm) => {
-            return elm[selectedFilter.key] === `${selectedFilter.value}`;
+            return elm[selectedFilter.key] === tempValue;
           })
         : resources
     );

@@ -1,6 +1,9 @@
-import React, { useEffect } from 'react';
-import { filterConfig } from './FiltersConfig';
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+import React from 'react';
 import { Grid } from '@material-ui/core';
+
+import { filterConfig } from './FiltersConfig';
 import { useStyles } from './FiltersStyles';
 
 function Filters({ onFilterClick }) {
@@ -32,7 +35,7 @@ function Filters({ onFilterClick }) {
                 color="default"
                 onClick={() => handleFilterToggle(val.id, val.value, filterKey)}
               >
-                {val.value}
+                {`${val.value}`}
               </div>
             </Grid>
           );

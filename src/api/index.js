@@ -6,8 +6,8 @@ export default axios.create({
   baseURL: appConfig.baseURL,
   withCredentials: false,
   headers: {
-    'Access-Control-Allow-Origin': '*',
-    'Content-Type': 'application/json',
+    // 'Access-Control-Allow-Origin': '*',
+    // 'Content-Type': 'application/json',
   },
   httpsAgent: new https.Agent({
     rejectUnauthorized: false,

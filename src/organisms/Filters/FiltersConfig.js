@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 export const filterConfig = {
   title: 'Select Filter',
   filterValues: [
@@ -30,12 +31,12 @@ export const filterConfig = {
       values: [
         {
           id: 15,
-          value: 'True',
+          value: true,
           link: 'launch_success=true',
         },
         {
           id: 16,
-          value: 'False',
+          value: false,
           link: 'launch_success=false',
         },
       ],
@@ -47,12 +48,12 @@ export const filterConfig = {
       values: [
         {
           id: 17,
-          value: 'True',
+          value: true,
           link: 'land_success=true',
         },
         {
           id: 18,
-          value: 'False',
+          value: false,
           link: 'land_success=false',
         },
       ],
