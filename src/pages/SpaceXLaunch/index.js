@@ -13,7 +13,7 @@ const dispatchActions = {
   fetchMissionData,
 };
 
-export const loadMissionData = (store) => {
-  return store.dispatch(fetchMissionData());
+export const loadMissionData = (store, url) => {
+  return store.dispatch(fetchMissionData(url));
 };
 export default connect(mapStateToProps, dispatchActions)(SpaceXLaunch);

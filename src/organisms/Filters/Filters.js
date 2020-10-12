@@ -23,7 +23,7 @@ function Filters({ selectedFilter }) {
             <Grid key={val.id} xs={6} item className={classes.chipContainer}>
               <CustomLink
                 isActive={selectedFilter === val.link}
-                to={selectedFilter ? '' : val.link}
+                to={selectedFilter === val.link ? '' : val.link}
               >
                 {`${val.value}`}
               </CustomLink>

@@ -29,8 +29,8 @@ function SpaceXLaunch({ fetchMissionData, history, resources }) {
   }, [resources]);
 
   useEffect(() => {
+    setSelectedFilter(id || '');
     if (id) {
-      setSelectedFilter(id);
       const filterKey = id.split('=')[0];
       let filterValue = id.split('=')[1];
 

@@ -6,12 +6,14 @@ import {
   FETCH_RESOURCE_SUCCESS,
 } from '../constants';
 
-export const fetchMissionData = () => async (dispatch) => {
+export const fetchMissionData = (url) => async (dispatch) => {
   dispatch({
     type: FETCH_RESOURCE,
   });
   try {
-    const res = await fetchResources('launches?limit=100');
+    const res = await fetchResources(
+      `launches?limit=100${url ? `?&${url}` : ''}`
+    );
     dispatch({
       type: FETCH_RESOURCE_SUCCESS,
       payload: res.data,
