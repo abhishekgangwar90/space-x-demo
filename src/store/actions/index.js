@@ -11,7 +11,9 @@ export const fetchMissionData = (url) => async (dispatch) => {
     type: FETCH_RESOURCE,
   });
   try {
-    const res = await fetchResources(`launches?limit=4${url ? `&${url}` : ''}`);
+    const res = await fetchResources(
+      `launches?limit=100${url ? `&${url}` : ''}`
+    );
     dispatch({
       type: FETCH_RESOURCE_SUCCESS,
       payload: res.data,

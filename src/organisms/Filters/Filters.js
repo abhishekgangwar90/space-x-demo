@@ -2,7 +2,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid } from '@material-ui/core';
 
 import { filterConfig } from './FiltersConfig';
 import { FilterContainer, FilterContent, CustomLink } from './FiltersStyles';

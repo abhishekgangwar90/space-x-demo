@@ -1,5 +1,4 @@
 /* eslint-disable camelcase */
-import { Grid } from '@material-ui/core';
 import React from 'react';
 import PropTypes from 'prop-types';
 import MissionCard from '../../molecules/MissionCard';
@@ -16,7 +15,7 @@ function MissionInfo({ missionData }) {
       },
     } = mission;
     return (
-      <Grid xs={12} sm={12} md={3} lg={3} item key={mission.flight_number}>
+      <div className="item" key={mission.flight_number}>
         <MissionCard
           image={mission_patch_small}
           launchYear={launch_year}
@@ -24,7 +23,7 @@ function MissionInfo({ missionData }) {
           successfulLaunch={launch_success}
           successfulLanding={cores && cores[0].land_success}
         />
-      </Grid>
+      </div>
     );
   });
 }

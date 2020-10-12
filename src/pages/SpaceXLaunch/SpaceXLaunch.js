@@ -44,21 +44,11 @@ function SpaceXLaunch({ fetchMissionData, history, resources }) {
   }, [id, resources]);
 
   const renderFilters = () => {
-    return (
-      // <Grid xs={12} sm={6} md={3} lg={3} item>
-      <Filters history={history} selectedFilter={selectedFilter} />
-      // </Grid>
-    );
+    return <Filters history={history} selectedFilter={selectedFilter} />;
   };
 
   const renderMissionInfo = () => {
-    return (
-      <Grid xs={12} sm={6} md={9} lg={9} item>
-        <Grid container spacing={2}>
-          <MissionInfo missionData={missionData} />
-        </Grid>
-      </Grid>
-    );
+    return <MissionInfo missionData={missionData} />;
   };
 
   return (
@@ -66,9 +56,8 @@ function SpaceXLaunch({ fetchMissionData, history, resources }) {
       <AppHeader title="Space-x Launch Schedule" />
       <Dashboard>
         <Grid>
-          {/* {renderMissionInfo()} */}
           <div className="column">{renderFilters()}</div>
-          <div className="content"> Hello hello</div>
+          <div className="content"> {renderMissionInfo()}</div>
         </Grid>
       </Dashboard>
       <Footer />

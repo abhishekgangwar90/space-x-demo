@@ -3,7 +3,22 @@ import styled from 'styled-components';
 
 export const CardContainer = styled.div`
   display: flex;
-  padding: 3%;
+  flex-direction: column;
+  padding: 2%;
   background-color: #fff;
   margin: 0 5%;
+
+  .mission-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .text-container {
+    margin: 2% 0;
+
+    span {
+      font-weight: bold;
+    }
+  }
 `;

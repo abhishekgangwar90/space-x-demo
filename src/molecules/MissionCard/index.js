@@ -5,7 +5,7 @@ import {
   CardContent,
   CardMedia,
   makeStyles,
-  Typography,
+  span,
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import { CardContainer } from './cardStyles';
@@ -29,28 +29,27 @@ function MissionCard({
   const classes = useStyles();
   return (
     <CardContainer className={classes.root}>
-      <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image={image || ''}
-          title="mission image"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="subtitle1">
-            Mission Ids :
-            {(missionId && missionId.length > 0 && missionId.join('')) || 'N/A'}
-          </Typography>
-          <Typography variant="subtitle1">
-            Launch Year : {launchYear}
-          </Typography>
-          <Typography gutterBottom variant="subtitle1">
-            Successful Launch: {`${successfulLaunch}`}
-          </Typography>
-          <Typography gutterBottom variant="subtitle1">
-            Successful Landing: {`${successfulLanding}`}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
+      <div>
+        <img src={image} alt="mission" />
+      </div>
+      <div className="mission-details">
+        <div className="text-container">
+          <span>Mission Ids :</span>
+          {(missionId && missionId.length > 0 && missionId.join('')) || 'N/A'}
+        </div>
+        <div className="text-container">
+          <span>Launch Year : </span>
+          {launchYear}
+        </div>
+        <div className="text-container">
+          <span>Successful Launch: </span>
+          {`${successfulLaunch}`}
+        </div>
+        <div className="text-container">
+          <span>Successful Landing:</span>
+          {`${successfulLanding}`}
+        </div>
+      </div>
     </CardContainer>
   );
 }

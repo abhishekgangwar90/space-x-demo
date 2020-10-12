@@ -1,5 +1,4 @@
 /* eslint-disable import/prefer-default-export */
-import { makeStyles } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -51,24 +50,3 @@ export const FilterContent = styled.div`
     padding: 2% 0;
   }
 `;
-
-export const useStyles = makeStyles((theme) => ({
-  filterTitle: {},
-  chipContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-  },
-  chip: {
-    padding: '10px 40px',
-    fontSize: '18px',
-    color: '#272c34',
-    backgroundColor: '#e6e6e6',
-    borderRadius: '10px',
-    cursor: 'pointer',
-
-    '&.active': {
-      color: '#fff',
-      backgroundColor: '#272c34',
-    },
-  },
-}));

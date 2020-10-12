@@ -18,6 +18,7 @@ export const Grid = styled.div`
   height: 100%;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  justify-content: space-between;
 
   & .column {
     display: flex;
@@ -25,7 +26,7 @@ export const Grid = styled.div`
     -ms-flex: 20%;
     flex: 20%;
     max-width: 20%;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
   }
 
@@ -35,50 +36,50 @@ export const Grid = styled.div`
     -ms-flex: 78%;
     flex: 78%;
     max-width: 78%;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid black;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    & .item {
+      display: flex;
+      display: -ms-flexbox;
+      -ms-flex: 25%;
+      flex: 25%;
+      max-width: 25%;
+      align-items: flex-start;
+      justify-content: center;
+      padding-bottom: 2%;
+    }
   }
 
   @media screen and (max-width: 700px) {
-    & .column {
+    & .column,
+    .content {
       -ms-flex: 100%;
       flex: 100%;
       max-width: 100%;
+
+      & .item {
+        -ms-flex: 100%;
+        flex: 100%;
+        max-width: 100%;
+      }
     }
   }
 
   @media screen and (max-width: 1024px) and (min-width: 701px) {
-    & .column {
+    & .column,
+    .content {
       -ms-flex: 50%;
       flex: 50%;
       max-width: 50%;
+
+      & .item {
+        -ms-flex: 100%;
+        flex: 100%;
+        max-width: 100%;
+      }
     }
   }
-
-  @media screen and (max-width: 1440px) and (min-width: 1025px) {
-    & .column {
-      -ms-flex: 20%;
-      flex: 20%;
-      max-width: 20%;
-    }
-  }
 `;
-
-export const GridItem = styled.div`
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  padding: 0 4px;
-`;
-
-export const Row = styled.div`
-  display: -ms-flexbox; /* IE10 */
-  display: flex;
-  -ms-flex-wrap: wrap; /* IE10 */
-  flex-wrap: wrap;
-  padding: 0 4px;
-`;
-
-export const Column = styled.div``;
