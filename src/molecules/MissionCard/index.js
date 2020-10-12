@@ -5,8 +5,8 @@ import {
   CardMedia,
   makeStyles,
   Typography,
-} from "@material-ui/core";
-import React from "react";
+} from '@material-ui/core';
+import React from 'react';
 
 const useStyles = makeStyles({
   root: {
@@ -30,22 +30,22 @@ function MissionCard({
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image={image || ""}
+          image={image || ''}
           title="mission image"
         />
         <CardContent>
           <Typography gutterBottom variant="subtitle1">
             Mission Ids :
-            {(missionId && missionId.length > 0 && missionId.join("")) || "N/A"}
+            {(missionId && missionId.length > 0 && missionId.join('')) || 'N/A'}
           </Typography>
           <Typography variant="subtitle1">
             Launch Year : {launchYear}
           </Typography>
           <Typography gutterBottom variant="subtitle1">
-            Successful Launch: {successfulLaunch}
+            Successful Launch: {`${successfulLaunch}`}
           </Typography>
           <Typography gutterBottom variant="subtitle1">
-            Successful Landing: {successfulLanding}
+            Successful Landing: {`${successfulLanding}`}
           </Typography>
         </CardContent>
       </CardActionArea>

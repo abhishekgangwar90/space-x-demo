@@ -8,6 +8,7 @@ import AppHeader from '../../atoms/AppHeader';
 import Footer from '../../atoms/Footer';
 
 import { useStyles } from './SpaceXLaunchStyles';
+import { getFilteredData } from './SpaceXLanchUtils';
 
 function SpaceXLaunch({ fetchMissionData, resources }) {
   const classes = useStyles();
@@ -44,17 +45,7 @@ function SpaceXLaunch({ fetchMissionData, resources }) {
   }, [id]);
 
   const handleFilterSelection = (selectedFilter) => {
-    const tempValue =
-      typeof selectedFilter.value !== 'boolean'
-        ? `${selectedFilter.value}`
-        : selectedFilter.value;
-    setMissionData(
-      selectedFilter.key !== ''
-        ? resources.filter((elm) => {
-            return elm[selectedFilter.key] === tempValue;
-          })
-        : resources
-    );
+    setMissionData(getFilteredData(resources, selectedFilter));
   };
 
   const renderFilters = () => {
