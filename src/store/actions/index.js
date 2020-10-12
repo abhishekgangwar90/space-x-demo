@@ -12,7 +12,7 @@ export const fetchMissionData = (url) => async (dispatch) => {
   });
   try {
     const res = await fetchResources(
-      `launches?limit=100${url ? `?&${url}` : ''}`
+      `launches?limit=100${url ? `&${url}` : ''}`
     );
     dispatch({
       type: FETCH_RESOURCE_SUCCESS,
