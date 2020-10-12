@@ -1,9 +1,16 @@
 /* eslint-disable import/prefer-default-export */
+
+/**
+ * Returns filtered Data based on selected Filter values
+ * @param {*} resources
+ * @param {*} selectedFilter
+ */
 export const getFilteredData = (resources, selectedFilter) => {
   const tempValue =
     typeof selectedFilter.value !== 'boolean'
       ? `${selectedFilter.value}`
       : selectedFilter.value;
+
   return selectedFilter.key !== ''
     ? resources.filter((elm) => {
         if (selectedFilter.key === 'land_success') {

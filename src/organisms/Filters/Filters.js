@@ -1,23 +1,33 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
 
 import { filterConfig } from './FiltersConfig';
 import { useStyles } from './FiltersStyles';
 
-function Filters({ onFilterClick }) {
+function Filters({ onFilterClick, history }) {
   const config = filterConfig;
   const classes = useStyles();
   const [selectedState, setSelectedState] = React.useState('');
 
-  const handleFilterToggle = (selectedId, selectedVal, selectedFilterKey) => {
-    const tempVal = selectedState === selectedId ? '' : selectedId;
+  /**
+   * Takes care of toggling the url based on filter click
+   * Sends a callback to parent component so data update can be done
+   * @param {*} selectedId
+   * @param {*} selectedVal
+   * @param {*} selectedFilterKey
+   */
+  const handleFilterToggle = (selectedFilter, selectedFilterKey) => {
+    const tempVal =
+      selectedState === selectedFilter.id ? '' : selectedFilter.id;
     setSelectedState(tempVal);
+    debugger;
     onFilterClick({
       id: tempVal,
       key: tempVal !== '' ? selectedFilterKey : '',
-      value: tempVal !== '' ? selectedVal : '',
+      value: tempVal !== '' ? selectedFilter.value : '',
     });
   };
 
@@ -33,7 +43,7 @@ function Filters({ onFilterClick }) {
                 }`}
                 size="medium"
                 color="default"
-                onClick={() => handleFilterToggle(val.id, val.value, filterKey)}
+                onClick={() => handleFilterToggle(val, filterKey)}
               >
                 {`${val.value}`}
               </div>
@@ -59,3 +69,8 @@ function Filters({ onFilterClick }) {
 }
 
 export default Filters;
+
+Filters.propTypes = {
+  history: PropTypes.instanceOf(Object).isRequired,
+  onFilterClick: PropTypes.func.isRequired,
+};

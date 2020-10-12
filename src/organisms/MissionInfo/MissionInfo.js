@@ -22,7 +22,7 @@ function MissionInfo({ missionData }) {
           launchYear={launch_year}
           missionId={mission_id}
           successfulLaunch={launch_success}
-          successfulLanding={(cores && cores[0].land_success) || 'N/A'}
+          successfulLanding={cores && cores[0].land_success}
         />
       </Grid>
     );

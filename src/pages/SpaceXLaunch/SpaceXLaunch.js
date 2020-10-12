@@ -8,9 +8,9 @@ import AppHeader from '../../atoms/AppHeader';
 import Footer from '../../atoms/Footer';
 
 import { useStyles } from './SpaceXLaunchStyles';
-import { getFilteredData } from './SpaceXLanchUtils';
+import { getFilteredData } from './SpaceXLaunchUtils';
 
-function SpaceXLaunch({ fetchMissionData, resources }) {
+function SpaceXLaunch({ fetchMissionData, history, resources }) {
   const classes = useStyles();
   const { id } = useParams();
 
@@ -51,7 +51,7 @@ function SpaceXLaunch({ fetchMissionData, resources }) {
   const renderFilters = () => {
     return (
       <Grid xs={12} sm={6} md={3} lg={3} item>
-        <Filters onFilterClick={handleFilterSelection} />
+        <Filters history={history} onFilterClick={handleFilterSelection} />
       </Grid>
     );
   };

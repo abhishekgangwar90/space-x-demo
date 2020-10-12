@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Card,
   CardActionArea,
@@ -6,7 +7,7 @@ import {
   makeStyles,
   Typography,
 } from '@material-ui/core';
-import React from 'react';
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles({
   root: {
@@ -54,3 +55,19 @@ function MissionCard({
 }
 
 export default MissionCard;
+
+MissionCard.propTypes = {
+  image: PropTypes.string,
+  launchYear: PropTypes.string,
+  missionId: PropTypes.arrayOf(String),
+  successfulLaunch: PropTypes.bool,
+  successfulLanding: PropTypes.bool,
+};
+
+MissionCard.defaultProps = {
+  image: '',
+  launchYear: '',
+  missionId: [],
+  successfulLaunch: false,
+  successfulLanding: false,
+};
