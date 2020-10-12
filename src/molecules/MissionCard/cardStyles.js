@@ -16,6 +16,7 @@ export const CardContainer = styled.div`
 
   .text-container {
     margin: 2% 0;
+    font-size: 18px;
 
     span {
       font-weight: bold;

@@ -1,23 +1,7 @@
 import React from 'react';
-import {
-  Card,
-  CardActionArea,
-  CardContent,
-  CardMedia,
-  makeStyles,
-  span,
-} from '@material-ui/core';
+
 import PropTypes from 'prop-types';
 import { CardContainer } from './cardStyles';
-
-const useStyles = makeStyles({
-  root: {
-    // maxWidth: 345,
-  },
-  media: {
-    height: 140,
-  },
-});
 
 function MissionCard({
   image,
@@ -26,9 +10,8 @@ function MissionCard({
   successfulLaunch,
   successfulLanding,
 }) {
-  const classes = useStyles();
   return (
-    <CardContainer className={classes.root}>
+    <CardContainer>
       <div>
         <img src={image} alt="mission" />
       </div>
@@ -47,7 +30,7 @@ function MissionCard({
         </div>
         <div className="text-container">
           <span>Successful Landing:</span>
-          {`${successfulLanding}`}
+          {`${successfulLanding === null ? 'N/A' : successfulLanding}`}
         </div>
       </div>
     </CardContainer>

@@ -2,19 +2,13 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const CustomLink = styled(Link)`
-  padding: 10px 40px;
-  font-size: 18px;
-  color: ${(props) => (props.isActive ? '#fff' : '#272c34')};
-  background-color: ${(props) => (props.isActive ? '#272c34' : '#e6e6e6')};
-  border-radius: 10px;
-  cursor: pointer;
-  text-decoration: none;
-`;
-
 export const FilterContainer = styled.div`
   background-color: white;
   padding: 2%;
+  max-width: 258px;
+  margin-bottom: 2%;
+  position: sticky;
+  top: 0;
 
   .title {
     display: flex;
@@ -28,6 +22,16 @@ export const FilterContainer = styled.div`
     background-color: #272c34;
     margin: 7% 0 10% 0;
   }
+`;
+
+export const CustomLink = styled(Link)`
+  padding: 10px 40px;
+  font-size: 18px;
+  color: ${(props) => (props.isActive ? '#fff' : '#272c34')};
+  background-color: ${(props) => (props.isActive ? '#272c34' : '#e6e6e6')};
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
 `;
 
 export const FilterContent = styled.div`
