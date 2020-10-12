@@ -11,6 +11,14 @@ const appRoutes = [
     loadData: loadMissionData,
   },
   {
+    id: 'spaceXLaunch',
+    path: '/:id',
+    exact: true,
+    title: 'Space-X Launch Schedule',
+    component: SpaceXLaunch,
+    loadData: loadMissionData,
+  },
+  {
     id: 'pageNotFound',
     path: '*',
     title: 'Page Not Found',

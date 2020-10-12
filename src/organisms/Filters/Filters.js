@@ -5,48 +5,28 @@ import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
 
 import { filterConfig } from './FiltersConfig';
-import { useStyles } from './FiltersStyles';
+import { useStyles, CustomLink } from './FiltersStyles';
 
-function Filters({ onFilterClick, history }) {
+function Filters({ selectedFilter }) {
   const config = filterConfig;
   const classes = useStyles();
-  const [selectedState, setSelectedState] = React.useState('');
 
   /**
-   * Takes care of toggling the url based on filter click
-   * Sends a callback to parent component so data update can be done
-   * @param {*} selectedId
-   * @param {*} selectedVal
-   * @param {*} selectedFilterKey
+   * Renders Filters based on the config provided
+   * @param {*} elm
    */
-  const handleFilterToggle = (selectedFilter, selectedFilterKey) => {
-    const tempVal =
-      selectedState === selectedFilter.id ? '' : selectedFilter.id;
-    setSelectedState(tempVal);
-    debugger;
-    onFilterClick({
-      id: tempVal,
-      key: tempVal !== '' ? selectedFilterKey : '',
-      value: tempVal !== '' ? selectedFilter.value : '',
-    });
-  };
-
-  const renderFilter = (elm, filterKey) => {
+  const renderFilter = (elm) => {
     return (
       <Grid container spacing={1}>
         {elm.values.map((val) => {
           return (
             <Grid key={val.id} xs={6} item className={classes.chipContainer}>
-              <div
-                className={`${classes.chip} ${
-                  selectedState === val.id ? 'active' : ''
-                }`}
-                size="medium"
-                color="default"
-                onClick={() => handleFilterToggle(val, filterKey)}
+              <CustomLink
+                isActive={selectedFilter === val.link}
+                to={selectedFilter ? '' : val.link}
               >
                 {`${val.value}`}
-              </div>
+              </CustomLink>
             </Grid>
           );
         })}
@@ -71,6 +51,5 @@ function Filters({ onFilterClick, history }) {
 export default Filters;
 
 Filters.propTypes = {
-  history: PropTypes.instanceOf(Object).isRequired,
-  onFilterClick: PropTypes.func.isRequired,
+  selectedFilter: PropTypes.string.isRequired,
 };

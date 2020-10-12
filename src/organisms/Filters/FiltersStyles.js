@@ -1,4 +1,17 @@
+/* eslint-disable import/prefer-default-export */
 import { makeStyles } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+
+export const CustomLink = styled(Link)`
+  padding: 10px 40px;
+  font-size: 18px;
+  color: ${(props) => (props.isActive ? '#fff' : '#272c34')};
+  background-color: ${(props) => (props.isActive ? '#272c34' : '#e6e6e6')};
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+`;
 
 export const useStyles = makeStyles((theme) => ({
   filterContainer: {

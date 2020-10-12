@@ -1,5 +1,6 @@
-import { Grid } from '@material-ui/core';
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { Grid } from '@material-ui/core';
 import { useParams } from 'react-router';
 
 import Filters from '../../organisms/Filters/Filters';
@@ -15,9 +16,12 @@ function SpaceXLaunch({ fetchMissionData, history, resources }) {
   const { id } = useParams();
 
   const [missionData, setMissionData] = React.useState([]);
+  const [selectedFilter, setSelectedFilter] = React.useState('');
 
   useEffect(() => {
-    fetchMissionData();
+    if (resources && resources.length === 0) {
+      fetchMissionData();
+    }
   }, [fetchMissionData]);
 
   useEffect(() => {
@@ -25,33 +29,26 @@ function SpaceXLaunch({ fetchMissionData, history, resources }) {
   }, [resources]);
 
   useEffect(() => {
-    // if (id === "all" || resources.length === 0) {
-    // fetchData();
-    // } else {
-    //   let filterKey = id.split("=")[0];
-    //   let filterValue = id.split("=")[1];
-    //   if (filterValue === "false") {
-    //     filterValue = false;
-    //   }
-    //   if (filterValue === "true") {
-    //     filterValue = true;
-    //   }
-    //   setMissionData(
-    //     resources.filter((elm) => {
-    //       return elm[filterKey] === filterValue;
-    //     })
-    //   );
-    // }
-  }, [id]);
+    if (id) {
+      setSelectedFilter(id);
+      const filterKey = id.split('=')[0];
+      let filterValue = id.split('=')[1];
 
-  const handleFilterSelection = (selectedFilter) => {
-    setMissionData(getFilteredData(resources, selectedFilter));
-  };
+      if (filterValue === 'false' || filterValue === 'true') {
+        filterValue = JSON.parse(filterValue);
+      } else {
+        filterValue = parseInt(filterValue, 10);
+      }
+      setMissionData(
+        getFilteredData(resources, { key: filterKey, value: filterValue })
+      );
+    }
+  }, [id, resources]);
 
   const renderFilters = () => {
     return (
       <Grid xs={12} sm={6} md={3} lg={3} item>
-        <Filters history={history} onFilterClick={handleFilterSelection} />
+        <Filters history={history} selectedFilter={selectedFilter} />
       </Grid>
     );
   };
@@ -81,3 +78,14 @@ function SpaceXLaunch({ fetchMissionData, history, resources }) {
 }
 
 export default SpaceXLaunch;
+
+SpaceXLaunch.propTypes = {
+  resources: PropTypes.arrayOf(Object),
+  fetchMissionData: PropTypes.func,
+  history: PropTypes.instanceOf(Object).isRequired,
+};
+
+SpaceXLaunch.defaultProps = {
+  resources: [],
+  fetchMissionData: () => {},
+};
