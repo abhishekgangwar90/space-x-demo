@@ -7,8 +7,6 @@ export const FilterContainer = styled.div`
   padding: 2%;
   max-width: 258px;
   margin-bottom: 2%;
-  position: sticky;
-  top: 0;
 
   .title {
     display: flex;
