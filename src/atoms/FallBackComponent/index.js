@@ -1,8 +1,7 @@
-import React from "react";
-import { Container } from "@material-ui/core";
+import React from 'react';
 
 function FallbackComponent() {
-  return <Container>Loading..</Container>;
+  return <div>Loading..</div>;
 }
 
 export default FallbackComponent;

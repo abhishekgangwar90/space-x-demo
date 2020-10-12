@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Grid } from '@material-ui/core';
 import { useParams } from 'react-router';
 
 import Filters from '../../organisms/Filters/Filters';
@@ -8,11 +7,10 @@ import MissionInfo from '../../organisms/MissionInfo/MissionInfo';
 import AppHeader from '../../atoms/AppHeader';
 import Footer from '../../atoms/Footer';
 
-import { useStyles } from './SpaceXLaunchStyles';
+import { Container, Dashboard, Grid } from './SpaceXLaunchStyles';
 import { getFilteredData } from './SpaceXLaunchUtils';
 
 function SpaceXLaunch({ fetchMissionData, history, resources }) {
-  const classes = useStyles();
   const { id } = useParams();
 
   const [missionData, setMissionData] = React.useState([]);
@@ -47,9 +45,9 @@ function SpaceXLaunch({ fetchMissionData, history, resources }) {
 
   const renderFilters = () => {
     return (
-      <Grid xs={12} sm={6} md={3} lg={3} item>
-        <Filters history={history} selectedFilter={selectedFilter} />
-      </Grid>
+      // <Grid xs={12} sm={6} md={3} lg={3} item>
+      <Filters history={history} selectedFilter={selectedFilter} />
+      // </Grid>
     );
   };
 
@@ -64,16 +62,17 @@ function SpaceXLaunch({ fetchMissionData, history, resources }) {
   };
 
   return (
-    <div className={classes.container}>
+    <Container>
       <AppHeader title="Space-x Launch Schedule" />
-      <div className={classes.dashboard}>
-        <Grid direction="row" spacing={2} container>
-          {renderFilters()}
-          {renderMissionInfo()}
+      <Dashboard>
+        <Grid>
+          {/* {renderMissionInfo()} */}
+          <div className="column">{renderFilters()}</div>
+          <div className="content"> Hello hello</div>
         </Grid>
-      </div>
+      </Dashboard>
       <Footer />
-    </div>
+    </Container>
   );
 }
 

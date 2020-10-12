@@ -1,8 +1,7 @@
-import React from "react";
-import { Route, Switch } from "react-router";
-import PropTypes from "prop-types";
+import React from 'react';
+import { Route, Switch } from 'react-router';
 import PageNotFound from '../../pages/PageNotFound';
-import SpaceXLaunch from "../../pages/SpaceXLaunch";
+import SpaceXLaunch from '../../pages/SpaceXLaunch';
 
 function AppRoutes() {
   return (
@@ -13,10 +12,8 @@ function AppRoutes() {
   );
 }
 
-AppRoutes.defaultProps = {
-};
+AppRoutes.defaultProps = {};
 
-AppRoutes.propTypes = {
-};
+AppRoutes.propTypes = {};
 
 export default AppRoutes;

@@ -8,10 +8,11 @@ import {
   Typography,
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
+import { CardContainer } from './cardStyles';
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    // maxWidth: 345,
   },
   media: {
     height: 140,
@@ -27,7 +28,7 @@ function MissionCard({
 }) {
   const classes = useStyles();
   return (
-    <Card className={classes.root}>
+    <CardContainer className={classes.root}>
       <CardActionArea>
         <CardMedia
           className={classes.media}
@@ -50,7 +51,7 @@ function MissionCard({
           </Typography>
         </CardContent>
       </CardActionArea>
-    </Card>
+    </CardContainer>
   );
 }
 

@@ -1,19 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { AppBar, Toolbar, Typography } from "@material-ui/core";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Header } from './headerStyle';
 
 function AppHeader({ title }) {
-  return (
-    <AppBar position="static">
-      <Toolbar>
-        <Typography variant="h6">{title}</Typography>
-      </Toolbar>
-    </AppBar>
-  );
+  return <Header>{title}</Header>;
 }
 
 AppHeader.defaultProps = {
-  title: "default Title",
+  title: 'default Title',
 };
 
 AppHeader.propTypes = {

@@ -1,17 +1,14 @@
-import React from "react";
-import { Router } from "react-router-dom";
-import { createMemoryHistory } from 'history';
+import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-import AppHeader from "../../atoms/AppHeader";
-import Footer from "../../atoms/Footer";
-import AppRoutes from "./AppRoutes";
-
-const history = createMemoryHistory();
+import AppHeader from '../../atoms/AppHeader';
+import Footer from '../../atoms/Footer';
+import AppRoutes from './AppRoutes';
 
 function Layout() {
   return (
-    <Router history={history}>
-      <AppHeader title={"Space-x Launch Schedule"} />
+    <Router>
+      <AppHeader title="Space-x Launch Schedule" />
       <AppRoutes />
       <Footer />
     </Router>

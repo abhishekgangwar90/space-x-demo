@@ -1,8 +1,8 @@
-import React from "react";
-import AppHeader from "../AppHeader";
+import React from 'react';
+import { Footer } from './footerStyles';
 
-function Footer() {
-  return <AppHeader title={"Developed By - Abhishek Gangwar"}></AppHeader>;
+function AppFooter() {
+  return <Footer>Developed By - Abhishek Gangwar</Footer>;
 }
 
-export default Footer;
+export default AppFooter;

@@ -13,26 +13,47 @@ export const CustomLink = styled(Link)`
   text-decoration: none;
 `;
 
+export const FilterContainer = styled.div`
+  background-color: white;
+  padding: 2%;
+
+  .title {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #fff;
+    background-color: #272c34;
+    margin: 7% 0 10% 0;
+  }
+`;
+
+export const FilterContent = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  .filter-row {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .filter {
+    display: flex;
+    flex: 50%;
+    min-width: 50%;
+    justify-content: center;
+    padding: 2% 0;
+  }
+`;
+
 export const useStyles = makeStyles((theme) => ({
-  filterContainer: {
-    backgroundColor: 'white',
-    padding: theme.spacing(2),
-  },
-  filter: {
-    paddingBottom: '20px',
-  },
-  filterTitle: {
-    display: 'flex',
-    flex: '1',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: '10px',
-    marginBottom: '10px',
-    textAlign: 'center',
-    color: '#fff',
-    backgroundColor: '#272c34',
-    margin: '7% 0 10% 0',
-  },
+  filterTitle: {},
   chipContainer: {
     display: 'flex',
     justifyContent: 'center',

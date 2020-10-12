@@ -5,11 +5,10 @@ import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
 
 import { filterConfig } from './FiltersConfig';
-import { useStyles, CustomLink } from './FiltersStyles';
+import { FilterContainer, FilterContent, CustomLink } from './FiltersStyles';
 
 function Filters({ selectedFilter }) {
   const config = filterConfig;
-  const classes = useStyles();
 
   /**
    * Renders Filters based on the config provided
@@ -17,34 +16,34 @@ function Filters({ selectedFilter }) {
    */
   const renderFilter = (elm) => {
     return (
-      <Grid container spacing={1}>
+      <div className="filter-row">
         {elm.values.map((val) => {
           return (
-            <Grid key={val.id} xs={6} item className={classes.chipContainer}>
+            <div key={val.id} className="filter">
               <CustomLink
                 isActive={selectedFilter === val.link}
                 to={selectedFilter === val.link ? '' : val.link}
               >
                 {`${val.value}`}
               </CustomLink>
-            </Grid>
+            </div>
           );
         })}
-      </Grid>
+      </div>
     );
   };
 
   return (
-    <Grid container className={classes.filterContainer}>
+    <FilterContainer>
       {config.filterValues.map((elm) => {
         return (
-          <Grid className={classes.filter} container key={elm.id}>
-            <div className={classes.filterTitle}>{elm.title}</div>
+          <FilterContent key={elm.id}>
+            <div className="title">{elm.title}</div>
             {renderFilter(elm, elm.filterKey)}
-          </Grid>
+          </FilterContent>
         );
       })}
-    </Grid>
+    </FilterContainer>
   );
 }
 
