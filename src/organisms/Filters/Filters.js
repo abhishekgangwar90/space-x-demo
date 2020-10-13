@@ -20,8 +20,8 @@ function Filters({ selectedFilter }) {
           return (
             <div key={val.id} className="filter">
               <CustomLink
-                isActive={selectedFilter === val.link}
-                to={selectedFilter === val.link ? '' : val.link}
+                isActive={selectedFilter === val.link.substring(1)}
+                to={selectedFilter === val.link.substring(1) ? '' : val.link}
               >
                 {`${val.value}`}
               </CustomLink>

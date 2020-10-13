@@ -13,7 +13,10 @@ const dispatchActions = {
   fetchMissionData,
 };
 
-export const loadMissionData = (store, url) => {
+export const loadMissionData = (store, queryParams) => {
+  const url = Object.keys(queryParams)
+    .map((key) => `${key}=${queryParams[key]}`)
+    .join('');
   return store.dispatch(fetchMissionData(url));
 };
 export default connect(mapStateToProps, dispatchActions)(SpaceXLaunch);

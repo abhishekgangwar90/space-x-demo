@@ -14,9 +14,9 @@ const appRenderer = (req, res) => {
   // getting new instance of store every time a new request is made.
   // sort of keeping client and server redux store separate from each other.
   const store = reduxStoreHelper();
-  console.log(req.path);
   const promises = matchRoutes(appRoutes, req.path).map(({ route }) => {
-    return route.loadData ? route.loadData(store) : null;
+    // console.log(req);
+    return route.loadData ? route.loadData(store, req.query) : null;
   });
 
   Promise.all(promises).then(() => {

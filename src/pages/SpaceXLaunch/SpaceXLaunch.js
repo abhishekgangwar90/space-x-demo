@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useParams } from 'react-router';
+import { useLocation } from 'react-router';
 
 import Filters from '../../organisms/Filters/Filters';
 import MissionInfo from '../../organisms/MissionInfo/MissionInfo';
@@ -10,8 +10,22 @@ import Footer from '../../atoms/Footer';
 import { Container, Dashboard, Grid } from './SpaceXLaunchStyles';
 import { getFilteredData } from './SpaceXLaunchUtils';
 
+const useQuery = () => {
+  return new URLSearchParams(useLocation().search);
+};
+
+const getQueryParams = (paramDetails) => {
+  const firstIterator = paramDetails.entries().next();
+  if (firstIterator && firstIterator.value && firstIterator.value.length > 0) {
+    return `${firstIterator.value[0]}=${firstIterator.value[1]}`;
+  }
+  return '';
+};
+
 function SpaceXLaunch({ fetchMissionData, history, resources }) {
-  const { id } = useParams();
+  // const { id } = useParams();
+  const paramDetails = useQuery();
+  const queryParams = getQueryParams(paramDetails);
 
   const [missionData, setMissionData] = React.useState([]);
   const [selectedFilter, setSelectedFilter] = React.useState('');
@@ -27,10 +41,10 @@ function SpaceXLaunch({ fetchMissionData, history, resources }) {
   }, [resources]);
 
   useEffect(() => {
-    setSelectedFilter(id || '');
-    if (id) {
-      const filterKey = id.split('=')[0];
-      let filterValue = id.split('=')[1];
+    setSelectedFilter(queryParams);
+    if (queryParams) {
+      const filterKey = queryParams.split('=')[0];
+      let filterValue = queryParams.split('=')[1];
 
       if (filterValue === 'false' || filterValue === 'true') {
         filterValue = JSON.parse(filterValue);
@@ -40,8 +54,10 @@ function SpaceXLaunch({ fetchMissionData, history, resources }) {
       setMissionData(
         getFilteredData(resources, { key: filterKey, value: filterValue })
       );
+    } else {
+      setMissionData(resources);
     }
-  }, [id, resources]);
+  }, [queryParams, resources]);
 
   const renderFilters = () => {
     return <Filters history={history} selectedFilter={selectedFilter} />;
