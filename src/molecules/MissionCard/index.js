@@ -12,8 +12,8 @@ function MissionCard({
 }) {
   return (
     <CardContainer>
-      <div>
-        <img src={image} alt="mission" />
+      <div style={{ marginTop: '8px', verticalAlign: 'middle' }}>
+        <img src={image} alt="mission" width="100%" />
       </div>
       <div className="mission-details">
         <div className="text-container">

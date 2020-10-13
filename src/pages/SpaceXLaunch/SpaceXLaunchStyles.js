@@ -39,7 +39,7 @@ export const Grid = styled.div`
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     align-items: flex-start;
-    justify-content: flex-start;
+    justify-content: center;
 
     & .item {
       display: flex;
@@ -69,16 +69,21 @@ export const Grid = styled.div`
   }
 
   @media screen and (max-width: 1024px) and (min-width: 701px) {
-    & .column,
-    .content {
-      -ms-flex: 50%;
-      flex: 50%;
-      max-width: 50%;
+    & .column {
+      -ms-flex: 33%;
+      flex: 33%;
+      max-width: 33%;
+    }
+
+    & .content {
+      -ms-flex: 67%;
+      flex: 67%;
+      max-width: 67%;
 
       & .item {
-        -ms-flex: 100%;
-        flex: 100%;
-        max-width: 100%;
+        -ms-flex: 50%;
+        flex: 50%;
+        max-width: 50%;
       }
     }
   }

@@ -23,7 +23,10 @@ export const FilterContainer = styled.div`
 `;
 
 export const CustomLink = styled(Link)`
-  padding: 10px 40px;
+  padding: 10px 0;
+  width: 90%;
+  display: flex;
+  justify-content: center;
   font-size: 18px;
   color: ${(props) => (props.isActive ? '#fff' : '#272c34')};
   background-color: ${(props) => (props.isActive ? '#272c34' : '#e6e6e6')};
