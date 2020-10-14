@@ -5,6 +5,8 @@ import ReactDOMServer from 'react-dom/server';
 import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router';
 import { renderRoutes } from 'react-router-config';
+import serialize from 'serialize-javascript';
+
 import appRoutes from '../../src/config/appRoutes';
 
 /**
@@ -25,7 +27,7 @@ const getServerApp = (req, context, store) => {
   return `
     <div id="root">${content}</div>
     <script>
-        window.INITIAL_SERVER_STATE = ${JSON.stringify(store.getState())}
+        window.INITIAL_SERVER_STATE = ${serialize(store.getState())}
     </script>
     `;
 };
